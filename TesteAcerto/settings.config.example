@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<appSettings>
+  <add key="marvel_private_key" value="SUA_CHAVE_PRIVADA_AQUI" />
+  <add key="marvel_public_key" value="SUA_CHAVE_PUBLICA_AQUI" />
+</appSettings>
