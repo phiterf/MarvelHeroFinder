@@ -17,7 +17,7 @@ namespace TesteAcerto.Repositories
             });
             if (json.data.results.Count == 0)
             {
-                BuscaRepositorio.SalvarBusca(termo);
+                Busca.SalvarBusca(termo);
                 return null;
             }
 
@@ -28,12 +28,36 @@ namespace TesteAcerto.Repositories
                 Nome = character.name,
                 Descricao = character.description,
                 Foto = $"{character.thumbnail.path}.{character.thumbnail.extension}",
-                Historias = character.stories?.available ?? 0
+                PossuiHistorias = ((character.stories?.available ?? 0) > 0)
             };
 
-            BuscaRepositorio.SalvarBusca(termo, personagem.Id);
+            Busca.SalvarBusca(termo, personagem.Id);
 
             return personagem;
+        }
+
+        public static (int total, List<Historia> historias) BuscarHistorias(int id, int perpage, int currentpage)
+        {
+            dynamic json = MarvelAPI.Call($"/characters/{id}/stories", new List<GetParam> {
+                new GetParam("limit", perpage.ToString()),
+                new GetParam("offset", ((currentpage - 1) * perpage).ToString())
+            });
+
+            var stories = json.data.results;
+            var total = Convert.ToInt32(json.data.total);
+            var historias = new List<Historia>();
+            foreach(dynamic story in stories)
+            {
+                var historia = new Historia()
+                {
+                    Id = story.id,
+                    Titulo = story.title,
+                    Descricao = story.description
+                };
+                historias.Add(historia);
+            }
+
+            return (total, historias);
         }
     }
 }
