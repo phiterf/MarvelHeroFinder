@@ -7,7 +7,7 @@ using System.Web;
 
 namespace TesteAcerto.Utils
 {
-    public static class Crypt
+    public static class Hash
     {
         public static String GenerateMD5(String str)
         {

@@ -13,7 +13,7 @@ namespace TesteAcerto.Utils
     {
         public static String GerarHash(String ts)
         {
-            return Crypt.GenerateMD5(ts + GetPrivateKey + GetPublicKey);
+            return Hash.GenerateMD5(ts + GetPrivateKey + GetPublicKey);
         }
 
         public static String BaseURL = "http://gateway.marvel.com/v1/public";
