@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="~/assets//favicon.ico" />
     <meta name="theme-color" content="#333333">
     @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     @RenderSection("styles", required: false)
 </head>
 <body>
@@ -17,6 +18,9 @@
     </nav>
     <div class="container pt-5">
         @RenderBody()
+        <div class="footer-bg">
+            <img src="~/assets/marvel-bg.png"/>
+        </div>
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

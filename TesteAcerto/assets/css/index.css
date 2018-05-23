@@ -9,3 +9,48 @@
 .fade-enter, .fade-leave-to{
     opacity: 0;
 }
+
+.story-id, .hero-id{
+    font-size: 11px;
+    color: #aaa;
+}
+
+.stories{
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid #111;
+    list-style: none;
+    padding: 0;
+    box-shadow: 0 0 10px #111;
+}
+.story{
+    border-top: 1px solid #111;
+    opacity: 0;
+    position: relative;
+    animation: stagger 0.4s ease-in-out;
+    animation-fill-mode : forwards;
+}
+
+.story:hover{
+    background: rgba(0, 0, 0, 0.3);
+}
+
+@keyframes stagger{
+    from{
+        left: 10px;
+        opacity: 0;
+    }
+    to{
+        left: 0;
+        opacity: 1;
+    }
+}
+
+.dark-pagination .page-link, .dark-pagination .page-item.disabled .page-link {
+    background: transparent;
+    color: white;
+}
+
+.dark-pagination .page-item.active .page-link{
+    background: #ed1d24;
+    border-color: #ff797d;
+}
