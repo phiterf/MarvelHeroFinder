@@ -11,6 +11,6 @@ namespace TesteAcerto.Models
         {
         }
 
-        // public virtual DbSet<MyEntity> MyEntities { get; set; }
+        public virtual DbSet<Busca> Buscas { get; set; }
     }
 }

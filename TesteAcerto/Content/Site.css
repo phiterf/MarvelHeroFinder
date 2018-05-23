@@ -1,8 +1,42 @@
-﻿.marvel-logo{
+.marvel-logo{
     max-height: 50px;
 }
 
 body{
     background-color: #222;
     color: #eee;
+}
+
+[v-cloak]{
+    display: none;
+}
+.dark-control, .dark-control:focus{
+    background: transparent;
+    color: white;
+}
+.dark-control:focus{
+    box-shadow: 0 0 5px red;
+    border-color: red;
+}
+
+.spinner{
+    display: inline-block;
+    content: ' ';
+    width: 50px;
+    height: 50px;
+    border-width: 4px;
+    border-color: white;
+    border-right-color: transparent;
+    animation: spin 1s linear infinite;
+    border-style: solid;
+    border-radius: 50%;
+}
+
+@keyframes spin{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }

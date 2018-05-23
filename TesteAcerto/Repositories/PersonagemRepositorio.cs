@@ -17,6 +17,7 @@ namespace TesteAcerto.Repositories
             });
             if (json.data.results.Count == 0)
             {
+                BuscaRepositorio.SalvarBusca(termo);
                 return null;
             }
 
@@ -26,8 +27,11 @@ namespace TesteAcerto.Repositories
                 Id = character.id,
                 Nome = character.name,
                 Descricao = character.description,
-                Foto = $"{character.thumbnail.path}.{character.thumbnail.extension}"
+                Foto = $"{character.thumbnail.path}.{character.thumbnail.extension}",
+                Historias = character.stories?.available ?? 0
             };
+
+            BuscaRepositorio.SalvarBusca(termo, personagem.Id);
 
             return personagem;
         }

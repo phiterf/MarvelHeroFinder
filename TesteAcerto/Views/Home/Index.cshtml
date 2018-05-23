@@ -1,8 +1,41 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Busca";
 }
 
-<div class="form-group">
-    <label>Informe o nome do personagem</label>
-    <input type="text" name="name" class="form-control" placeholder="Spider-man, Iron Man, Black Widow..."/>    
+<div id="app" v-cloak>
+    <div class="form-group">
+        <label>Informe o nome do personagem</label>
+        <div class="input-group">
+            <input type="text" name="name" v-model="termo" v-on:keydown.enter="busca" class="form-control dark-control" placeholder="Spider-man, Iron Man, Black Widow..." />
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" :disabled="!termo.trim()" v-on:click="busca" type="button">
+                    Pesquisar
+                </button>
+            </div>
+        </div>
+    </div>
+    <transition name="fade" mode="out-in">
+        <div v-if="carregando" class="my-5 text-center" key="load">
+            <span class="spinner"></span>
+        </div>
+        <div v-if="personagem">
+            <div class="row">
+                <div class="col-3">
+                    <img :src="personagem.Foto" class="hero-picture img-fluid rounded" alt="Alternate Text" />
+                </div>
+                <div class="col-9">
+                    <h4 class="hero-name my-3 text-center">{{personagem.Nome}}</h4>
+                    <p class="hero-description">
+                        {{personagem.Descricao || "O personagem buscado não possui uma descrição :("}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </transition>
 </div>
+@section styles{
+    <link href="~/assets/css/index.css" rel="stylesheet" />
+}
+@section scripts {
+    <script src="~/assets/js/index.js"></script>
+}
